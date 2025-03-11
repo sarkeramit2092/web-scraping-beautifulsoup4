@@ -86,6 +86,65 @@ else:
 
 ---
 
+## Why Use `os` in File Handling?
+
+Using the `os` module in Python is essential for file handling beyond just reading and writing. It provides functions to interact with the operating system, such as checking file existence, deleting files, renaming them, and working with directories.
+
+### **1. Check if a File Exists Before Reading/Writing**
+```python
+import os
+
+if os.path.exists("test.txt"):
+    with open("test.txt", "r") as f:
+        print(f.read())
+else:
+    print("File does not exist.")
+```
+
+### **2. Delete a File**
+```python
+import os
+
+if os.path.exists("test.txt"):
+    os.remove("test.txt")
+    print("File deleted.")
+else:
+    print("File not found.")
+```
+
+### **3. Get File Metadata (Size, Path, etc.)**
+```python
+import os
+
+file = "test.txt"
+
+if os.path.exists(file):
+    print(f"File Size: {os.path.getsize(file)} bytes")
+    print(f"Absolute Path: {os.path.abspath(file)}")
+```
+
+### **4. Create and Remove Directories**
+```python
+import os
+
+os.mkdir("new_folder")  # Creates a folder
+os.rmdir("new_folder")  # Removes an empty folder
+```
+
+### **5. List Files in a Directory**
+```python
+import os
+
+files = os.listdir(".")  # Lists files in the current directory
+print(files)
+```
+
+### **When Not to Use `os`**
+- For basic file read/write operations (`open()` is sufficient).
+- When working with file paths, prefer `pathlib` (introduced in Python 3.4) over `os.path`.
+
+---
+
 ## Best Practices
 - Always use `with open()` to avoid leaving files open.
 - Use `try-except` to handle file errors.
