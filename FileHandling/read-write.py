@@ -28,3 +28,11 @@ for i in f:
   #print(len(token))
 
 f.close()
+
+#if we don't want to use close() method everytime; then use "with"
+
+with open("test3.txt", "w+") as f:
+  print(f.write("Don't use close method every time"))
+
+# write and read mode (w+), if file not exist then it will be created.
+# write and read mode (r+), if file not exist then it will give us an error.
